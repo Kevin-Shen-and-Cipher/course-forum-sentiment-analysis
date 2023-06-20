@@ -6,6 +6,9 @@ def get_emotional_score(text):
     http_code = 500
     try:
         score = SnowNLP(text).sentiments
+        score = score * 100
+        if score > 100:
+            score = 100
         http_code = 200
     except Exception as error:
         print("error", error)
